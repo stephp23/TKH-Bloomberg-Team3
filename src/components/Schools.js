@@ -31,8 +31,8 @@ function Schools(props) {
         });
     }
     return (
-        <div className="flex-column flex-1">
-            <h6>Find your School!</h6>
+        <div className="flex-column flex-1 pad-10">
+            <h3>Find your School</h3>
             <InformationViewer rowData={data} columnDefs={columnDefs}></InformationViewer>
         </div>
     );
