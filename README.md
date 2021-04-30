@@ -5,7 +5,7 @@
     <img src="src\images\banner.png" alt="Logo">
   </a>
 
-  <h1 align="center">Small Business PPP Loan Status Lookup</h1>
+  <h1 align="center">College Finder</h1>
 
   <p align="center">
     What are you in the mood to watch?
