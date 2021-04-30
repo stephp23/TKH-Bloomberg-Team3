@@ -10,8 +10,10 @@ function InformationViewer(props) {
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
     const [rowData, setRowData] = useState(null);
+    const [colData, setColDef] = useState(null);
     useEffect(() => {
         setRowData(props.rowData);
+        setColDef(props.columns);
     }, []);
 
     const onGridReady = (params) => {
@@ -24,10 +26,10 @@ function InformationViewer(props) {
             <div className="ag-theme-balham" style={{ height: '100%', boxSizing: 'border-box' }}>
                 <AgGridReact
                     style={{ width: '100%', height: '100%;' }}
-                    columnDefs={props.columnDefs}
+                    columnDefs={colData}
                     defaultColDef={defaultColDef()}
                     onGridReady={onGridReady}
-                    rowData={props.rowData}>
+                    rowData={rowData}>
                 </AgGridReact>
             </div>
         </div>
