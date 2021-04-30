@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import InformationViewer from './InformationViewer';
 
 function BusinessFinder(props) {
-    const [count, setCount] = useState(0);
-
     return (
         <div class="flex-column">
             <div class="flex flex-1">
