@@ -49,7 +49,8 @@ function defaultColDef() {
 function getColumns() {
     return [
         { headerName: "School", field:"school.name" },
-        { headerName: "State", field:"school.state", width: 75 }
+        { headerName: "State", field:"school.state", width: 75 },
+        { headerName: "Zip", field:"school.zip", width: 125 }
     ]
 }
 
