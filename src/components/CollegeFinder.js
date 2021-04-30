@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import InformationViewer from './InformationViewer';
 import Button from '@material-ui/core/Button';
+import Schools from './Schools';
 
-function BusinessFinder(props) {
+function CollegeFinder(props) {
     return (
         <div className="flex-column">
             <div className="flex flex-1">
@@ -12,7 +13,7 @@ function BusinessFinder(props) {
                     </Button>
                 </div>
                 <div className="flex flex-5">
-                    <InformationViewer></InformationViewer>
+                    <Schools></Schools>
                 </div>
             </div>
             <div className="flex footer"></div>
@@ -20,4 +21,4 @@ function BusinessFinder(props) {
     );
 }
 
-export default BusinessFinder;
+export default CollegeFinder;
