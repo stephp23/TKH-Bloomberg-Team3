@@ -1,9 +1,9 @@
 import './App.css';
-import BusinessFinder from './components/BusinessFinder';
+import CollegeFinder from './components/CollegeFinder';
 
 function App() {
   return (
-    <BusinessFinder></BusinessFinder>
+    <CollegeFinder></CollegeFinder>
   );
 }
 
