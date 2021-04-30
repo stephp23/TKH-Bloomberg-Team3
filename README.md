@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+###
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-## Available Scripts
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/stephp23/TKH-Bloomberg-Team3">
+    <img src="src\images\banner.png" alt="Logo">
+  </a>
 
-In the project directory, you can run:
+  <h1 align="center">Small Business PPP Loan Status Lookup</h1>
 
-### `yarn start`
+  <p align="center">
+    What are you in the mood to watch?
+    <br />
+    <a href="https://github.com/stephp23/TKH-Bloomberg-Team3"><strong>🔍Explore the Docs »</strong></a>
+    <br />
+    <br />
+    <a href="">👀 View Demo</a>
+    ·
+    <a href="https://github.com/stephp23/TKH-Bloomberg-Team3">🐛Report Bug</a>
+    ·
+    <a href="https://github.com/stephp23/TKH-Bloomberg-Team3">✍🏽Request Feature</a>
+  </p>
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#installation">Installation</a>
+      <li>
+      <a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#description">Description</a></li>
+         <li><a href="#api">API</a></li>
+         <li><a href="#mvp">MVP</a></li>
+      </ul>
+    </li>
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+    <li><a href="#our-team">Our Team</a></li>
+  </ol>
+</details>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
 
-### `yarn test`
+## Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How to Run
 
-### `yarn build`
+1. Fork and clone the repo
+2. Must be using node v14 or higher
+3. Run `npm install`
+4. Run `npm start`
+5. Go to http://localhost:3000 to view the application
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Description
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ <a href="https://github.com/stephp23/TKH-Bloomberg-Team3">
+    <!-- <img src="" alt="Logo"> -->
+  </a>
 
-### `yarn eject`
+## API
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+We are using the - [U.S. Small Business Administration PPP Loan Forgiveness API](https://ussbaforgiveness.github.io/API-Dictionary.html)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+ <!-- which gives the following information:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Categories include movies, series, or episodes
+- Access to valid IMDb ID numbers for movies and shows
+- Movie or series title to search for
+- Year of release
+- Short or full plot description  -->
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- BUILT WITH -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Built With
 
-### Code Splitting
+This project was built using React JS, JavaScript, CSS, and Material UI on the frontend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+- [JavaScript](https://javascript.com)
+- [ReactJS](https://reactjs.org)
+- [U.S. Small Business Administration PPP Loan Forgiveness API](https://ussbaforgiveness.github.io/API-Dictionary.html)
+- [Material UI](https://material-ui.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<!-- ACKNOWLEDGEMENTS -->
 
-### Making a Progressive Web App
+## Acknowledgements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [Img Shields](https://shields.io)
+- [FontAwesome](https://fontawesome.com/)
 
-### Advanced Configuration
+<!-- CONTACT -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Our Team
 
-### Deployment
+- Stephanie Pena - [LinkedIn](https://www.linkedin.com/in/stephanieapena/)
+- Katherine Fernandez - [LinkedIn](https://www.linkedin.com/in/katfernandez22/)
+- Andrew Karnis - [LinkedIn]()
+- Joey Jiem - [LinkedIn]()
+- Will Roney - [LinkedIn]()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `yarn build` fails to minify
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
