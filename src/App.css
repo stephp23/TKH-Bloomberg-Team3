@@ -77,3 +77,7 @@
   border-top: 1pt solid gray;
   flex: 0 0 100px;
 }
+
+.pad-10 {
+  padding: 10px
+}
