@@ -6,7 +6,7 @@ function Schools(props) {
     const [data, setData] = useState(null);
     const [columnDefs, setColumnDefs] = useState(columns);
     const [apiKey, setApiKey] = useState('4GXH1JZZMWLKlc9oP2eb2A8RrDADLndBMR2jGnY2');
-    const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=50`;
+    const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=100`;
 
 
     useEffect(async () => {

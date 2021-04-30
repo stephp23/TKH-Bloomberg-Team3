@@ -10,7 +10,7 @@ function InformationViewer(props) {
     const [rowData, setRowData] = useState(null);
     useEffect(() => {
         setRowData(props.rowData);
-    }, []);
+    }, props.rowData);
 
     const onGridReady = (params) => {
         setGridApi(params.api);
