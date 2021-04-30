@@ -5,14 +5,42 @@ function Schools(props) {
     const columns = getColumns();
     const [data, setData] = useState(null);
     const [columnDefs, setColumnDefs] = useState(columns);
+    const [apiKey, setApiKey] = useState('4GXH1JZZMWLKlc9oP2eb2A8RrDADLndBMR2jGnY2');
+    let pageCtr = 0;
+    let collegeData = [];
+    let hasResults = true;
+
     useEffect(async () => {
-        const [apiKey, setApiKey] = useState('4GXH1JZZMWLKlc9oP2eb2A8RrDADLndBMR2jGnY2');
         const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}`;
-        fetch(url).then((resp) => resp.json()).then((data) => {
-            console.log(data);
-            setData(data);
-        });
+        await getAllData();
+        setData(collegeData);
     }, []);
+
+    const getAllData = async () => {
+        while(hasResults){
+            if(pageCtr === 0){
+                const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}`;
+                await fetch(url).then((resp) => resp.json()).then((data) => {
+                    console.log(data);
+                    collegeData = collegeData.concat(data.results);
+                    console.log(collegeData);
+                    pageCtr++;
+                });
+            } else {
+                const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&page=${pageCtr}&per_page=100`;
+                await fetch(url).then((resp) => resp.json()).then((data) => {
+                    if(data.results.length === 0 || data.results === undefined) {
+                        hasResults = false;
+                    } else {
+                        console.log(data);
+                        collegeData = collegeData.concat(data.results);
+                        console.log(collegeData);
+                        pageCtr++;
+                    }
+                });
+            }
+        }
+    }
     return (
         <div className="flex flex-1">
             <h6>Find your School!</h6>
