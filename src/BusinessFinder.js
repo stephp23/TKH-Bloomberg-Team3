@@ -7,10 +7,10 @@ function BusinessFinder(props) {
         <div class="flex-column">
             <div class="flex flex-1">
                 <div class="flex-1 sidebar">
-                    <p>Hello world!</p>
+                    <p>Sidebar</p>
                 </div>
                 <div class="flex-4">
-                    <p>testing 123</p>
+                    <p>Main Panel</p>
                 </div>
             </div>
             <div class="flex footer"></div>
