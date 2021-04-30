@@ -1,5 +1,5 @@
 import './App.css';
-import BusinessFinder from './BusinessFinder';
+import BusinessFinder from './components/BusinessFinder';
 
 function App() {
   return (
