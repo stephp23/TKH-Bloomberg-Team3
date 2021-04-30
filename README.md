@@ -108,7 +108,7 @@ This project was built using React JS, JavaScript, CSS, and Material UI on the f
 - Stephanie Pena - [LinkedIn](https://www.linkedin.com/in/stephanieapena/)
 - Katherine Fernandez - [LinkedIn](https://www.linkedin.com/in/katfernandez22/)
 - Andrew Karnis - [LinkedIn]()
-- Joey Jiem - [LinkedIn]()
+- Joey Jiemjitpolchai - [LinkedIn](https://www.linkedin.com/in/joey-j-703686125/)
 - Will Roney - [LinkedIn]()
 
 
