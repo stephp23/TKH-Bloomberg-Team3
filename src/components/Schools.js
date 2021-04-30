@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { setState, useEffect, useState } from 'react';
 import InformationViewer from './InformationViewer';
 
 function Schools(props) {
@@ -10,7 +10,7 @@ function Schools(props) {
         const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}`;
         fetch(url).then((resp) => resp.json()).then((data) => {
             console.log(data);
-            setData(data.results);
+            setData(data);
         });
     }, []);
     return (
