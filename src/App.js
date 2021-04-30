@@ -1,14 +1,9 @@
 import './App.css';
+import BusinessFinder from './BusinessFinder';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a>
-          Hello World
-        </a>
-      </header>
-    </div>
+    <BusinessFinder></BusinessFinder>
   );
 }
 
