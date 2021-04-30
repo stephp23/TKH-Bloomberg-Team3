@@ -42,16 +42,25 @@
 } 
 
 .flex-2 {
-  flex:2
+  flex:2;
+}
+
+.flex-3 {
+  flex:3;
+}
+
+.flex-4 {
+  flex:4;
 }
 
 .flex {
-  display: 1;
+  display: flex;;
 }
 
 .flex-column {
   display: flex;
   flex-direction: column;
+  flex:1;
 }
 
 .sidebar {
