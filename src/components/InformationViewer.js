@@ -6,14 +6,11 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 function InformationViewer(props) {
     console.log(props);
-    const [apiKey, setApiKey] = useState('6uZ6pdqW450sBe8x01Tsb3LDI0rV6SwkOaAohtGs');
     const [gridApi, setGridApi] = useState(null);
     const [gridColumnApi, setGridColumnApi] = useState(null);
     const [rowData, setRowData] = useState(null);
-    const [colData, setColDef] = useState(null);
     useEffect(() => {
         setRowData(props.rowData);
-        setColDef(props.columns);
     }, []);
 
     const onGridReady = (params) => {
@@ -26,7 +23,7 @@ function InformationViewer(props) {
             <div className="ag-theme-balham" style={{ height: '100%', boxSizing: 'border-box' }}>
                 <AgGridReact
                     style={{ width: '100%', height: '100%;' }}
-                    columnDefs={colData}
+                    columnDefs={props.columnDefs}
                     defaultColDef={defaultColDef()}
                     onGridReady={onGridReady}
                     rowData={rowData}>
