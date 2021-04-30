@@ -64,5 +64,11 @@
 }
 
 .sidebar {
+  flex: 1 1 100px;
   border-right: 1pt solid gray;
+}
+
+.footer {
+  border-top: 1pt solid gray;
+  flex: 0 0 100px;
 }
