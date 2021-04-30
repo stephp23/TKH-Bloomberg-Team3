@@ -53,6 +53,10 @@
   flex:4;
 }
 
+.flex-5 {
+  flex:5;
+}
+
 .flex {
   display: flex;;
 }
@@ -65,6 +69,7 @@
 
 .sidebar {
   flex: 1 1 100px;
+  max-width: 150px;
   border-right: 1pt solid gray;
 }
 
