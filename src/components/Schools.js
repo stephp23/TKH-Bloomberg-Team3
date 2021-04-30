@@ -6,45 +6,34 @@ function Schools(props) {
     const [data, setData] = useState(null);
     const [columnDefs, setColumnDefs] = useState(columns);
     const [apiKey, setApiKey] = useState('4GXH1JZZMWLKlc9oP2eb2A8RrDADLndBMR2jGnY2');
-    let pageCtr = 0;
-    let collegeData = [];
-    let hasResults = true;
+    const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=100`;
+
 
     useEffect(async () => {
-        const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}`;
-        await getAllData();
-        setData(collegeData);
+        const data = await getAllData();
+        console.log(data);
+        setData(data);
     }, []);
 
     const getAllData = async () => {
-        while(hasResults){
-            if(pageCtr === 0){
-                const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}`;
-                await fetch(url).then((resp) => resp.json()).then((data) => {
-                    console.log(data);
-                    collegeData = collegeData.concat(data.results);
-                    console.log(collegeData);
-                    pageCtr++;
-                });
-            } else {
-                const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&page=${pageCtr}&per_page=100`;
-                await fetch(url).then((resp) => resp.json()).then((data) => {
-                    if(data.results.length === 0 || data.results === undefined) {
-                        hasResults = false;
-                    } else {
-                        console.log(data);
-                        collegeData = collegeData.concat(data.results);
-                        console.log(collegeData);
-                        pageCtr++;
-                    }
-                });
-            }
+        const finders = [];
+        const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
+        for (let x = 0; x < 5; x++) {
+            finders.push(fetch(curUrl(x)).then(resp => resp.json()));
         }
+        return await Promise.all(finders).then((values) => {
+            return values.reduce((acc, cur, idx) => {
+                if (cur && cur.results){
+                    acc.push(...cur.results);
+                }
+                return acc;
+            }, []);
+        });
     }
     return (
-        <div className="flex flex-1">
-            <h6>Find your School!</h6>
-            <InformationViewer rowData={data} columns={columnDefs}></InformationViewer>
+        <div className="flex-column flex-1 pad-10">
+            <h3>Find your School</h3>
+            <InformationViewer rowData={data} columnDefs={columnDefs}></InformationViewer>
         </div>
     );
 }
@@ -60,9 +49,9 @@ function defaultColDef() {
 
 function getColumns() {
     return [
-        { headerName: "School", field:"school.name" },
-        { headerName: "State", field:"school.state", width: 75 },
-        { headerName: "Zip", field:"school.zip", width: 125 }
+        { headerName: "School", field: "school.name" },
+        { headerName: "State", field: "school.state", width: 75 },
+        { headerName: "Zip", field: "school.zip", width: 125 }
     ]
 }
 
