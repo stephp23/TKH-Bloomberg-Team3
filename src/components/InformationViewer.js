@@ -34,7 +34,7 @@ function InformationViewer(props) {
                         resizable: true,
                       }}>
                     <AgGridColumn headerName="School" field="school.name" />
-                    <AgGridColumn headerName="State" field="state" />
+                    <AgGridColumn headerName="State" field="school.state" />
                 </AgGridReact>
             </div>
         </div>
