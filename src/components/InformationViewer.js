@@ -10,8 +10,11 @@ function InformationViewer(props) {
     const [gridColumnApi, setGridColumnApi] = useState(null);
     const [rowData, setRowData] = useState(null);
     useEffect(async () => {
-        const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${this.state.apiKey}`;
-        fetch(url).then((resp) => resp.json()).then((data) => setRowData(data))
+        const url = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}`;
+        fetch(url).then((resp) => resp.json()).then((data) => {
+            console.log(data);
+            setRowData(data.results);
+        });
     }, []);
     const onGridReady = (params) => {
         setGridApi(params.api);
@@ -30,8 +33,8 @@ function InformationViewer(props) {
                         floatingFilter: true,
                         resizable: true,
                       }}>
-                    <AgGridColumn headerName="Athlete" field="athlete" />
-                    <AgGridColumn headerName="Sport" field="sport" />
+                    <AgGridColumn headerName="School" field="school.name" />
+                    <AgGridColumn headerName="State" field="state" />
                 </AgGridReact>
             </div>
         </div>
