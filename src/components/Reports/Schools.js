@@ -17,7 +17,7 @@ function Schools(props) {
 
 function getColumns() {
     return [
-        { headerName: "School", field: "school.name" },
+        { headerName: "School", field: "school.name", width: 500 },
         { headerName: "State", field: "school.state", width: 75 },
         { headerName: "Zip", field: "school.zip", width: 125 },
         { 
