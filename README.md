@@ -69,7 +69,7 @@ We are using the - [U.S. Department of Education College Scorecard](https://gith
 
 - All Institution-level data files for 1996-97 through 2018-19
 - Most Recent Institution-Level Data
-- Most Recent Data by Field of Study -->
+- Most Recent Data by Field of Study
 - Field of study-level data files for the pooled 2014-15, 2015-16 award years through the pooled 2016-17, 2017
 - Crosswalk files for 2000-01 through 2018-19 that link the Department’s OPEID with an IPEDS UNITID for each institution -->
 
