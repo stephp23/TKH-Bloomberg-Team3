@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Home from '../components/Home';
+import Home from '../Home/Home';
 
 
 
@@ -12,7 +12,6 @@ const HomeView = () => {
           <div className="flex-1 sidebar">
           </div>
           <div className="flex flex-5">
-            <Header />
             <Home />
         </div>
       </div>

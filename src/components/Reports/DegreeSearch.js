@@ -19,7 +19,8 @@ function DegreeSearch(props) {
 
 function getColumns() {
   return [
-    { headerName: "Major", field: "title", width: 500, cellRenderer: 'agGroupCellRenderer' }
+    { headerName: "Major", field: "title", width: 500, cellRenderer: 'agGroupCellRenderer' },
+    { headerName: "#", width: 75, colId: 'numSchools', valueGetter: (params) => params.data.schools.length }
   ];
 }
 
