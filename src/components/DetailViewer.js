@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
@@ -32,7 +33,7 @@ function DetailViewer(props) {
                     detailCellRendererParams={
                         props.detailCellRendererParams
                     }
-                    modules={[MasterDetailModule]}>
+                    modules={[ClientSideRowModelModule, MasterDetailModule]}>
                 </AgGridReact>
             </div>
         </div>

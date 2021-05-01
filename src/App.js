@@ -7,14 +7,16 @@ import Schools from "../src/components/Reports/Schools";
 import DegreeSearch from "./components/Reports/DegreeSearch";
 import Footer from "./components/Footer/Footer";
 import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { CsvExportModule } from "@ag-grid-community/csv-export";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 
 ModuleRegistry.registerModules([
-    CsvExportModule,
-    ExcelExportModule,
-    MasterDetailModule
+  ClientSideRowModelModule,
+  CsvExportModule,
+  ExcelExportModule,
+  MasterDetailModule
 ]);
 
 function App() {
