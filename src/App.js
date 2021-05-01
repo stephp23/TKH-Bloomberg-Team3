@@ -1,16 +1,20 @@
 import "./App.css";
-import React, { useEffect, setState, useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
-import Header from "./components/Header/Header";
-import Home from "./components/Home/Home";
-import Schools from "../src/components/Reports/Schools";
-import DegreeSearch from "./components/Reports/DegreeSearch";
-import Footer from "./components/Footer/Footer";
+import React, { useEffect, setState, useState, Fragment } from "react";
+import {
+  Switch, Route, Link, BrowserRouter
+} from "react-router-dom";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import { ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 import { CsvExportModule } from "@ag-grid-community/csv-export";
 import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
+
+import Home from "./components/Home/Home";
+import Schools from "../src/components/Reports/Schools";
+import DegreeSearch from "./components/Reports/DegreeSearch";
+import Footer from "./components/Footer/Footer";
 
 ModuleRegistry.registerModules([
   ClientSideRowModelModule,
@@ -29,7 +33,7 @@ function App() {
 
   useEffect(async () => {
     const data = await getAllDataFromFiles();
-    // console.log(JSON.stringify(data));
+    data.sort((a,b) => a.school.name >b.school.name ? 1 :-1);
     setData(data);
   });
 
@@ -59,36 +63,54 @@ function App() {
     });
   };
 
-  const getAllDataFromApi = async () => {
-    const finders = [];
-    const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
-    // By going based on increments of 4 (x = 30, 31, 32, 33, 34), there will be 100 records pulled in total
-    for (let x = 30; x < 35; x++) {
-      finders.push(
-        fetch(curUrl(x)).then((resp) => resp.json())
-      );
-    }
-    return await Promise.all(finders).then((values) => {
-      return values.reduce((acc, cur, idx) => {
-        if (cur && cur.results) {
-          acc.push(...cur.results);
-        }
-        return acc;
-      }, []);
-    });
-  };
+  // const getAllDataFromApi = async () => {
+  //   const finders = [];
+  //   const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
+  //   // By going based on increments of 4 (x = 30, 31, 32, 33, 34), there will be 100 records pulled in total
+  //   for (let x = 30; x < 35; x++) {
+  //     finders.push(
+  //       fetch(curUrl(x)).then((resp) => resp.json())
+  //     );
+  //   }
+  //   return await Promise.all(finders).then((values) => {
+  //     return values.reduce((acc, cur, idx) => {
+  //       if (cur && cur.results) {
+  //         acc.push(...cur.results);
+  //       }
+  //       return acc;
+  //     }, []);
+  //   });
+  // };
 
+  const allTabs = getTabs();
   return (
     <div className="flex-column flex-1">
-      <div className="header-div">
-        <Header />
-      </div>
-      <div className="flex-column flex-1 pad-10">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/schools" exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
-          <Route path="/degrees" exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
-        </Switch>
+      <div className="flex flex-1">
+        <BrowserRouter>
+          <div className="flex flex-column pad-10">
+            <Route
+              path="/"
+              render={({ location }) => (
+                <Fragment>
+                  <Tabs value={location.pathname}>
+                    <Tab label="Home" value="/" component={Link} to={allTabs[0]} />
+                    <Tab label="Schools" value="/schools" component={Link} to={allTabs[1]} />
+                    <Tab label="Degrees" value="/degrees"  component={Link} to={allTabs[2]}
+                    />
+                  </Tabs>
+                  <Switch>
+                    {/* <Route path={allTabs[0].route} render={(Home)} />
+                    <Route path={allTabs[1].route} exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[2].route} exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} /> */}
+                    <Route path={allTabs[2]} render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[1]} render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[0]} render={() => <Home></Home>} />
+                  </Switch>
+                </Fragment>
+              )}
+            />
+          </div>
+        </BrowserRouter>
       </div>
       <div className="flex footer-div">
         <Footer />
@@ -97,4 +119,10 @@ function App() {
   );
 }
 
+function getTabs() {
+  return ['/', '/schools', '/degrees'];
+}
+
 export default App;
+
+
