@@ -67,15 +67,14 @@
   flex:1;
 }
 
-.sidebar {
-  flex: 1 1 100px;
-  max-width: 150px;
-  border-right: 1pt solid gray;
+.header-div {
+  flex:0 0 50px;
+  border-bottom: 1pt solid black;
 }
 
-.footer {
+.footer-div {
   border-top: 1pt solid gray;
-  flex: 0 0 100px;
+  flex: 0 0 5-px;
 }
 
 .pad-10 {
