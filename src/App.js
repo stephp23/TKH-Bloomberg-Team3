@@ -83,7 +83,6 @@ function App() {
   // };
 
   const allTabs = getTabs();
-  console.log(allTabs);
   return (
     <div className="flex-column flex-1">
       <div className="flex flex-1">
