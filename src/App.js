@@ -45,16 +45,18 @@ function App() {
   };
 
   return (
-    <div className="flex-column flex-1 pad-10">
-      <Header />
-      <div class="flex-column flex-1">
+    <div className="flex-column flex-1">
+      <div className="header-div">
+        <Header />
+      </div>
+      <div className="flex-column flex-1 pad-10">
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/schools" data={data} exact component={Schools} />
           <Route path="/degree" data={data} exact component={DegreeSearch} />
         </Switch>
       </div>
-      <div class="flex footer-div">
+      <div className="flex footer-div">
         <Footer />
       </div>
     </div>

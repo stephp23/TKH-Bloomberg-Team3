@@ -9,7 +9,7 @@ function Schools(props) {
     return (
         <div className="flex-column">
             <div className="flex flex-1">
-                <div className="flex-column flex-1 pad-10">
+                <div className="flex-column flex-1">
                     <h3>Find your School</h3>
                     <InformationViewer rowData={props.route.data} columnDefs={columnDefs}></InformationViewer>
                 </div>
@@ -31,7 +31,8 @@ function getColumns() {
     return [
         { headerName: "School", field: "school.name" },
         { headerName: "State", field: "school.state", width: 75 },
-        { headerName: "Zip", field: "school.zip", width: 125 }
+        { headerName: "Zip", field: "school.zip", width: 125 },
+        { headerName: "Link", field: "school.schoolUrl", width: 125 }
     ]
 }
 
