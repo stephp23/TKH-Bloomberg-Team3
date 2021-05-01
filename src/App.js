@@ -10,21 +10,21 @@ import Footer from "./components/Footer/Footer";
 function App() {
   const [data, setData] = useState(null);
   const [apiKey, setApiKey] = useState(
-    "4GXH1JZZMWLKlc9oP2eb2A8RrDADLndBMR2jGnY2"
+    "6uZ6pdqW450sBe8x01Tsb3LDI0rV6SwkOaAohtGs"
   );
-  const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=100`;
+  const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=25`;
 
   useEffect(async () => {
-    const data = await getAllData();
-    console.log(data);
+    const data = await getAllDataFromApi();
+    console.log(JSON.stringify(data));
     setData(data);
   }, []);
 
-  const getAllData = async () => {
+  // switch to this function when you want to read from json files
+  const getAllDataFromFiles = async () => {
     const finders = [];
-    //const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
     const curUrl = (pageNum) => `data/page${pageNum}.json`;
-    for (let x = 0; x < 4; x++) {
+    for (let x = 0; x < 6; x++) {
       finders.push(
         fetch(curUrl(x), {
           headers: {
@@ -32,6 +32,27 @@ function App() {
             Accept: "application/json",
           },
         }).then((resp) => resp.json())
+      );
+    }
+    return await Promise.all(finders).then((values) => {
+      return values.reduce((acc, cur, idx) => {
+        // When you want to read from the json files, you will have to use curr
+        // instead since the json file consist of just the result array
+        if (cur) {
+          acc.push(...cur);
+        }
+        return acc;
+      }, []);
+    });
+  };
+
+  const getAllDataFromApi = async () => {
+    const finders = [];
+    const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
+    // By going based on increments of 4 (x = 30, 31, 32, 33, 34), there will be 100 records pulled in total
+    for (let x = 30; x < 35; x++) {
+      finders.push(
+        fetch(curUrl(x)).then((resp) => resp.json())
       );
     }
     return await Promise.all(finders).then((values) => {
