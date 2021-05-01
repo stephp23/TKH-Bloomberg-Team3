@@ -1,11 +1,23 @@
 import "./App.css";
-import React, { useEffect, setState, useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import React, { useEffect, setState, useState, Fragment } from "react";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import HomeView from "./components/Home/HomeView";
 import Schools from "../src/components/Reports/Schools";
 import DegreeSearch from "./components/Reports/DegreeSearch";
 import Footer from "./components/Footer/Footer";
+import {
+  Switch,
+  Route,
+  Link,
+  BrowserRouter,
+  Redirect
+} from "react-router-dom";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+// import FinancialsReport from "../Reports/Financials/FinancialsReport";
+
+
 
 function App() {
   const [data, setData] = useState(null);
@@ -19,6 +31,9 @@ function App() {
     console.log(JSON.stringify(data));
     setData(data);
   }, []);
+
+  const allTabs = ['/', '/schools', '/degress', '/financials'];
+
 
   // switch to this function when you want to read from json files
   const getAllDataFromFiles = async () => {
@@ -67,19 +82,29 @@ function App() {
 
   return (
     <div className="flex-column flex-1">
-      <div className="header-div">
-        <Header />
+      <BrowserRouter>
+      <div className="App">
+        <Route
+          path="/"
+          render={({ location }) => (
+            <Fragment>
+              <Tabs value={location.pathname}>
+                <Tab label="Home" value = '/' component={HomeView} />
+                <Tab label="Schools" value = '/schools' component={Schools} />
+                <Tab label="Degree Search" value = '/degrees' component={DegreeSearch} />
+                {/* <Tab label="Financials" value = '/financials' component={FinancialsReport} /> */}
+              </Tabs>
+              <Switch>
+                <Route path={allTabs[0]} render={(Home)} />
+                <Route path={allTabs[1]} render={(Schools)} />
+                <Route path={allTabs[2]} exact render={(DegreeSearch)} />
+                {/* <Route path={allTabs[3]} exact render={(FinancialsReport)} /> */}
+              </Switch>      
+            </Fragment>
+          )}
+        />
       </div>
-      <div className="flex-column flex-1 pad-10">
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/schools" exact render={() => <Schools data={data}/>} />
-          <Route path="/degrees" exact render={() => <DegreeSearch data={data}/>} />
-        </Switch>
-      </div>
-      <div className="flex footer-div">
-        <Footer />
-      </div>
+    </BrowserRouter>
     </div>
   );
 }
