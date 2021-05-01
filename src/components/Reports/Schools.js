@@ -5,7 +5,6 @@ function Schools(props) {
     const columns = getColumns();
     const [data, setData] = useState(null);
     const [columnDefs, setColumnDefs] = useState(columns);
-    console.log(props);
     return (
         <div className="flex-column">
             <div className="flex flex-1">

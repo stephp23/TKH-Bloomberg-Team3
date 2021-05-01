@@ -9,16 +9,17 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const [data, setData] = useState(null);
+  const [groupedSchools, setSchoolData] = useState(null);
   const [apiKey, setApiKey] = useState(
     "6uZ6pdqW450sBe8x01Tsb3LDI0rV6SwkOaAohtGs"
   );
   const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=25`;
 
   useEffect(async () => {
-    const data = await getAllDataFromApi();
-    console.log(JSON.stringify(data));
+    const data = await getAllDataFromFiles();
+    // console.log(JSON.stringify(data));
     setData(data);
-  }, []);
+  });
 
   // switch to this function when you want to read from json files
   const getAllDataFromFiles = async () => {
@@ -73,8 +74,8 @@ function App() {
       <div className="flex-column flex-1 pad-10">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/schools" exact render={() => <Schools data={data}/>} />
-          <Route path="/degrees" exact render={() => <DegreeSearch data={data}/>} />
+          <Route path="/schools" exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
+          <Route path="/degrees" exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
         </Switch>
       </div>
       <div className="flex footer-div">
