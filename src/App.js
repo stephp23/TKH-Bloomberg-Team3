@@ -18,19 +18,32 @@ import Tab from '@material-ui/core/Tab';
 // import FinancialsReport from "../Reports/Financials/FinancialsReport";
 
 
+import { ModuleRegistry } from '@ag-grid-community/core';
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
+import { CsvExportModule } from "@ag-grid-community/csv-export";
+import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
+import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
+
+ModuleRegistry.registerModules([
+  ClientSideRowModelModule,
+  CsvExportModule,
+  ExcelExportModule,
+  MasterDetailModule
+]);
 
 function App() {
   const [data, setData] = useState(null);
+  const [groupedSchools, setSchoolData] = useState(null);
   const [apiKey, setApiKey] = useState(
     "6uZ6pdqW450sBe8x01Tsb3LDI0rV6SwkOaAohtGs"
   );
   const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=25`;
 
   useEffect(async () => {
-    const data = await getAllDataFromApi();
-    console.log(JSON.stringify(data));
+    const data = await getAllDataFromFiles();
+    // console.log(JSON.stringify(data));
     setData(data);
-  }, []);
+  });
 
   const allTabs = ['/', '/schools', '/degress', '/financials'];
 
@@ -83,28 +96,28 @@ function App() {
   return (
     <div className="flex-column flex-1">
       <BrowserRouter>
-      <div className="App">
-        <Route
-          path="/"
-          render={({ location }) => (
-            <Fragment>
-              <Tabs value={location.pathname}>
-                <Tab label="Home" value = '/' component={HomeView} />
-                <Tab label="Schools" value = '/schools' component={Schools} />
-                <Tab label="Degree Search" value = '/degrees' component={DegreeSearch} />
-                {/* <Tab label="Financials" value = '/financials' component={FinancialsReport} /> */}
-              </Tabs>
-              <Switch>
-                <Route path={allTabs[0]} render={(Home)} />
-                <Route path={allTabs[1]} render={(Schools)} />
-                <Route path={allTabs[2]} exact render={(DegreeSearch)} />
-                {/* <Route path={allTabs[3]} exact render={(FinancialsReport)} /> */}
-              </Switch>      
-            </Fragment>
-          )}
-        />
-      </div>
-    </BrowserRouter>
+        <div className="App">
+          <Route
+            path="/"
+            render={({ location }) => (
+              <Fragment>
+                <Tabs value={location.pathname}>
+                  <Tab label="Home" value='/' component={HomeView} />
+                  <Tab label="Schools" value='/schools' component={Schools} />
+                  <Tab label="Degree Search" value='/degrees' component={DegreeSearch} />
+                  {/* <Tab label="Financials" value = '/financials' component={FinancialsReport} /> */}
+                </Tabs>
+                <Switch>
+                  <Route path={allTabs[0]} render={(Home)} />
+                  <Route path={allTabs[1]} render={(Schools)} />
+                  <Route path={allTabs[2]} exact render={(DegreeSearch)} />
+                  {/* <Route path={allTabs[3]} exact render={(FinancialsReport)} /> */}
+                </Switch>
+              </Fragment>
+            )}
+          />
+        </div>
+      </BrowserRouter>
     </div>
   );
 }

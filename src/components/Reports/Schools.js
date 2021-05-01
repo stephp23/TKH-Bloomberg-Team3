@@ -1,11 +1,9 @@
-import React, { setState, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import InformationViewer from '../InformationViewer';
 
 function Schools(props) {
     const columns = getColumns();
-    const [data, setData] = useState(null);
     const [columnDefs, setColumnDefs] = useState(columns);
-    console.log(props);
     return (
         <div className="flex-column">
             <div className="flex flex-1">
@@ -15,15 +13,6 @@ function Schools(props) {
             </div>
         </div>
     );
-}
-
-function defaultColDef() {
-    return {
-        width: 150,
-        filter: 'agTextColumnFilter',
-        floatingFilter: true,
-        resizable: true,
-    }
 }
 
 function getColumns() {
