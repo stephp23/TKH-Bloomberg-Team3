@@ -18,9 +18,14 @@ function Schools(props) {
 
     const getAllData = async () => {
         const finders = [];
-        const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
-        for (let x = 0; x < 5; x++) {
-            finders.push(fetch(curUrl(x)).then(resp => resp.json()));
+        //const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
+        const curUrl = (pageNum) => `data/page${pageNum}.json`;
+        for (let x = 0; x < 4; x++) {
+            finders.push(
+                fetch(curUrl(x), {headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               }}).then(resp => resp.json()));
         }
         return await Promise.all(finders).then((values) => {
             return values.reduce((acc, cur, idx) => {
