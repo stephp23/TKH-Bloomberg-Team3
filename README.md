@@ -55,6 +55,7 @@
 
 ## Description
 
+Search and compare colleges: their fields of study, costs, admissions, results, and more.
 
  <a href="https://github.com/stephp23/TKH-Bloomberg-Team3">
     <!-- <img src="" alt="Logo"> -->
@@ -62,15 +63,15 @@
 
 ## API
 
-We are using the - [U.S. Small Business Administration PPP Loan Forgiveness API](https://ussbaforgiveness.github.io/API-Dictionary.html)
+We are using the - [U.S. DEPARTMENT OF EDUCATION College Scorecard](https://github.com/RTICWDT/open-data-maker/blob/master/API.md)
 
  <!-- which gives the following information:
 
-- Categories include movies, series, or episodes
-- Access to valid IMDb ID numbers for movies and shows
-- Movie or series title to search for
-- Year of release
-- Short or full plot description  -->
+- All Institution-level data files for 1996-97 through 2018-19
+- Most Recent Institution-Level Data
+- Most Recent Data by Field of Study -->
+- Field of study-level data files for the pooled 2014-15, 2015-16 award years through the pooled 2016-17, 2017
+- Crosswalk files for 2000-01 through 2018-19 that link the Department’s OPEID with an IPEDS UNITID for each institution.
 
 
 
