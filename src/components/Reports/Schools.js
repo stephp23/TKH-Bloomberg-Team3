@@ -5,13 +5,13 @@ function Schools(props) {
     const columns = getColumns();
     const [data, setData] = useState(null);
     const [columnDefs, setColumnDefs] = useState(columns);
-
+    console.log(props);
     return (
         <div className="flex-column">
             <div className="flex flex-1">
                 <div className="flex-column flex-1">
                     <h3>Find your School</h3>
-                    <InformationViewer rowData={props.route.data} columnDefs={columnDefs}></InformationViewer>
+                    <InformationViewer rowData={props.data} columnDefs={columnDefs}></InformationViewer>
                 </div>
             </div>
         </div>

@@ -52,7 +52,7 @@ function App() {
       <div className="flex-column flex-1 pad-10">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/schools" data={data} exact component={Schools} />
+          <Route path="/schools" exact render={() => <Schools data={data}/>} />
           <Route path="/degree" data={data} exact component={DegreeSearch} />
         </Switch>
       </div>
