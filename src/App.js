@@ -15,10 +15,10 @@ function App() {
   const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=25`;
 
   useEffect(async () => {
-    const data = await getAllDataFromApi();
-    console.log(JSON.stringify(data));
+    const data = await getAllDataFromFiles();
+    // console.log(JSON.stringify(data));
     setData(data);
-  }, []);
+  });
 
   // switch to this function when you want to read from json files
   const getAllDataFromFiles = async () => {
