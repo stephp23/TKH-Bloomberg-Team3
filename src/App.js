@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   const [data, setData] = useState(null);
+  const [groupedSchools, setSchoolData] = useState(null);
   const [apiKey, setApiKey] = useState(
     "6uZ6pdqW450sBe8x01Tsb3LDI0rV6SwkOaAohtGs"
   );
@@ -73,8 +74,8 @@ function App() {
       <div className="flex-column flex-1 pad-10">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/schools" exact render={() => <Schools data={data}/>} />
-          <Route path="/degrees" exact render={() => <DegreeSearch data={data}/>} />
+          <Route path="/schools" exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
+          <Route path="/degrees" exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
         </Switch>
       </div>
       <div className="flex footer-div">
