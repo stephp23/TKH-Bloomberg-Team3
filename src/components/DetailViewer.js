@@ -10,7 +10,7 @@ function DetailViewer(props) {
     const [rowData, setRowData] = useState(null);
     useEffect(() => {
         setRowData(props.rowData);
-    }, props.rowData);
+    }, [props.rowData]);
 
     const onGridReady = (params) => {
         setGridApi(params.api);
@@ -38,6 +38,7 @@ function defaultColDef() {
     return {
         width: 150,
         filter: 'agTextColumnFilter',
+        sortable: true,
         floatingFilter: true,
         resizable: true,
     }
