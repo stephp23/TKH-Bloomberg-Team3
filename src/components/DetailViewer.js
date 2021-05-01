@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AgGridColumn, AgGridReact } from 'ag-grid-react';
+import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
+import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
 
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
@@ -10,7 +12,7 @@ function DetailViewer(props) {
     const [rowData, setRowData] = useState(null);
     useEffect(() => {
         setRowData(props.rowData);
-    }, props.rowData);
+    }, [props.rowData]);
 
     const onGridReady = (params) => {
         setGridApi(params.api);
@@ -27,7 +29,11 @@ function DetailViewer(props) {
                     onGridReady={onGridReady}
                     onCellClicked={props.onCellClicked}
                     rowData={rowData}
-                    masterDetail={true}>
+                    masterDetail={true}
+                    detailCellRendererParams={
+                        props.detailCellRendererParams
+                    }
+                    modules={[ClientSideRowModelModule, MasterDetailModule]}>
                 </AgGridReact>
             </div>
         </div>
@@ -38,6 +44,7 @@ function defaultColDef() {
     return {
         width: 150,
         filter: 'agTextColumnFilter',
+        sortable: true,
         floatingFilter: true,
         resizable: true,
     }
