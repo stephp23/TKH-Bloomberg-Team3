@@ -1,11 +1,12 @@
 import React from 'react';
-import Degrees from './Degrees';
+import DetailViewer from '../DetailViewer.js';
 
 
 function DegreeSearch(props) {
+  console.log(props)
   return (
       <div className="flex-column">
-        <Degrees />
+        <DetailViewer></DetailViewer>
       </div>
   );
 }
