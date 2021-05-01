@@ -12,7 +12,6 @@ import { ExcelExportModule } from "@ag-grid-enterprise/excel-export";
 import { MasterDetailModule } from "@ag-grid-enterprise/master-detail";
 
 ModuleRegistry.registerModules([
-    ClientSideRowModelModule,
     CsvExportModule,
     ExcelExportModule,
     MasterDetailModule
