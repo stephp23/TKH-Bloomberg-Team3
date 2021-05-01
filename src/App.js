@@ -4,7 +4,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Schools from "../src/components/Reports/Schools";
-import DegreeSearch from "./components/Reports/Degrees/DegreeSearch";
+import DegreeSearch from "./components/Reports/DegreeSearch";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/schools" exact render={() => <Schools data={data}/>} />
-          <Route path="/degree" data={data} exact component={DegreeSearch} />
+          <Route path="/degrees" exact render={() => <DegreeSearch data={data}/>} />
         </Switch>
       </div>
       <div className="flex footer-div">
