@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import Schools from '../src/components/Reports/Schools';
 import DegreeSearch from './components/Reports/Degrees/DegreeSearch';
+import FinancialsReport from './components/Reports/Financials/FinancialsReport';
 import Footer from './components/Footer/Footer';
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/schools" exact component={Schools} />
           <Route path="/degree" exact component={DegreeSearch} />
+          <Route path="/financials" exact component={FinancialsReport} />
         </Switch>
       </div>
       <div className="flex footer-div">
@@ -30,3 +32,5 @@ function App() {
 }
 
 export default App;
+
+
