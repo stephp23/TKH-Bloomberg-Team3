@@ -31,17 +31,23 @@ function getGroupedData(data) {
           acc[major.code] = {
             code: major.code,
             title: major.title,
-            schools: []
-          }
+            schoolMap: {}
+          };
         }
-        acc[major.code].schools.push(cur.school);
+        const majorCode = acc[major.code];
+        if (!majorCode.schoolMap.hasOwnProperty(cur.school.name)) {
+          majorCode.schoolMap[cur.school.name] = cur.school;
+        }
       }
     }
     return acc;
   }, {});
   if (grouped) {
     return Object.keys(grouped).map((majorCode) => {
-      return grouped[majorCode];
+      const majorBase = { ...grouped[majorCode] };
+      majorBase.schools = Object.keys(majorBase.schoolMap).map(schoolName => majorBase.schoolMap[schoolName]);
+      delete majorBase.schoolMap;
+      return majorBase;
     });
   }
   return [];
