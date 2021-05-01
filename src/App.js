@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Schools from "../src/components/Reports/Schools";
 import DegreeSearch from "./components/Reports/DegreeSearch";
+import Costs from "../src/components/Reports/Costs";
 import Footer from "./components/Footer/Footer";
 import { ModuleRegistry } from '@ag-grid-community/core';
 import { ClientSideRowModelModule } from "@ag-grid-community/client-side-row-model";
@@ -88,6 +89,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/schools" exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
           <Route path="/degrees" exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
+          <Route path="/costs" exact render={() => <Costs data={data} groupedSchools={groupedSchools} />} />
         </Switch>
       </div>
       <div className="flex footer-div">
