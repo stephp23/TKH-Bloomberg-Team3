@@ -36,9 +36,6 @@ function App() {
     setData(data);
   });
 
-  const allTabs = ['/', '/schools', '/degrees'];
-
-
   // switch to this function when you want to read from json files
   const getAllDataFromFiles = async () => {
     const finders = [];
@@ -84,6 +81,8 @@ function App() {
   //   });
   // };
 
+  const allTabs = getTabs();
+  console.log(allTabs);
   return (
     <div className="flex-column flex-1">
       <div className="flex flex-1">
@@ -94,14 +93,14 @@ function App() {
               render={({ location }) => (
                 <Fragment>
                   <Tabs value={location.pathname}>
-                    <Tab label="Home" value={allTabs[0]} component={Link} to={allTabs[0]} />
-                    <Tab label="Schools" value={allTabs[1]} component={Link} to={allTabs[1]} />
-                    <Tab label="Degree Search" value={allTabs[2]} component={Link} to={allTabs[2]} />
+                    <Tab label="Home" value={allTabs[0].name} component={Link} to={allTabs[0].route} />
+                    <Tab label="Schools" value={allTabs[1].name} component={Link} to={allTabs[1].route} />
+                    <Tab label="Degree Search" value={allTabs[2].name} component={Link} to={allTabs[2].route} />
                   </Tabs>
                   <Switch>
-                    <Route path={allTabs[0]} render={(Home)} />
-                    <Route path={allTabs[1]} exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
-                    <Route path={allTabs[2]} exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[0].route} render={(Home)} />
+                    <Route path={allTabs[1].route} exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[2].route} exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
                   </Switch>
                 </Fragment>
               )}
@@ -114,6 +113,14 @@ function App() {
       </div>
     </div>
   );
+}
+
+function getTabs() {
+  return [
+    {name: 'Home', route: '/'}, 
+    {name: 'Schools', route:'/schools'}, 
+    {name: 'Degrees', route: '/degrees'}
+  ];
 }
 
 export default App;
