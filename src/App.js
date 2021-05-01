@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useEffect, setState, useState, Fragment } from "react";
-import { Switch, Route, Link, BrowserRouter
+import {
+  Switch, Route, Link, BrowserRouter
 } from "react-router-dom";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -32,7 +33,7 @@ function App() {
 
   useEffect(async () => {
     const data = await getAllDataFromFiles();
-    // console.log(JSON.stringify(data));
+    data.sort((a,b) => a.school.name >b.school.name ? 1 :-1);
     setData(data);
   });
 
@@ -87,20 +88,24 @@ function App() {
     <div className="flex-column flex-1">
       <div className="flex flex-1">
         <BrowserRouter>
-          <div className="App">
+          <div className="flex flex-column pad-10">
             <Route
               path="/"
               render={({ location }) => (
                 <Fragment>
                   <Tabs value={location.pathname}>
-                    <Tab label="Home" value={allTabs[0].name} component={Link} to={allTabs[0].route} />
-                    <Tab label="Schools" value={allTabs[1].name} component={Link} to={allTabs[1].route} />
-                    <Tab label="Degree Search" value={allTabs[2].name} component={Link} to={allTabs[2].route} />
+                    <Tab label="Home" value="/" component={Link} to={allTabs[0]} />
+                    <Tab label="Schools" value="/schools" component={Link} to={allTabs[1]} />
+                    <Tab label="Degrees" value="/degrees"  component={Link} to={allTabs[2]}
+                    />
                   </Tabs>
                   <Switch>
-                    <Route path={allTabs[0].route} render={(Home)} />
+                    {/* <Route path={allTabs[0].route} render={(Home)} />
                     <Route path={allTabs[1].route} exact render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
-                    <Route path={allTabs[2].route} exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[2].route} exact render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} /> */}
+                    <Route path={allTabs[2]} render={() => <DegreeSearch data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[1]} render={() => <Schools data={data} groupedSchools={groupedSchools} />} />
+                    <Route path={allTabs[0]} render={() => <Home></Home>} />
                   </Switch>
                 </Fragment>
               )}
@@ -116,11 +121,7 @@ function App() {
 }
 
 function getTabs() {
-  return [
-    {name: 'Home', route: '/'}, 
-    {name: 'Schools', route:'/schools'}, 
-    {name: 'Degrees', route: '/degrees'}
-  ];
+  return ['/', '/schools', '/degrees'];
 }
 
 export default App;
