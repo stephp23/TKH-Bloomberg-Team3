@@ -43,12 +43,15 @@ function getGroupedData(data) {
     return acc;
   }, {});
   if (grouped) {
-    return Object.keys(grouped).map((majorCode) => {
+    const majors = Object.keys(grouped).map((majorCode) => {
       const majorBase = { ...grouped[majorCode] };
       majorBase.schools = Object.keys(majorBase.schoolMap).map(schoolName => majorBase.schoolMap[schoolName]);
       delete majorBase.schoolMap;
+      majorBase.schools.sort((a,b)=> a.name > b.name ? 1 : 0);
       return majorBase;
     });
+    majors.sort((a, b) => a.title > b.title ? 1 : -1);
+    return majors;
   }
   return [];
 }
