@@ -81,3 +81,23 @@
 .pad-10 {
   padding: 10px
 }
+
+.home {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* overflow: hidden; */
+}
+
+.home section {
+	margin: auto;
+	width: 80%;
+	max-height: 800px;
+	text-align: center;
+}
+
+.home strong {
+	text-decoration: underline;
+}
+

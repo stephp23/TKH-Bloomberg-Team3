@@ -4,6 +4,7 @@ import $ from 'jquery';
 import Popper from 'popper.js';
 import './index.css';
 import App from './App';
+import './App.css';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
 
