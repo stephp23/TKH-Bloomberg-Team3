@@ -25,6 +25,7 @@ function InformationViewer(props) {
                     columnDefs={props.columnDefs}
                     defaultColDef={defaultColDef()}
                     onGridReady={onGridReady}
+                    onCellClicked={props.onCellClicked}
                     rowData={rowData}>
                 </AgGridReact>
             </div>
