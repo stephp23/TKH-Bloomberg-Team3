@@ -10,7 +10,6 @@ function Schools(props) {
         <div className="flex-column">
             <div className="flex flex-1">
                 <div className="flex-column flex-1">
-                    <h3>Find your School</h3>
                     <InformationViewer onCellClicked={onCellClicked}rowData={props.data} columnDefs={columnDefs}></InformationViewer>
                 </div>
             </div>
