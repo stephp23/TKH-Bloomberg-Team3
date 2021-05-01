@@ -1,16 +1,70 @@
-import './App.css';
-import React from "react";
+import "./App.css";
+import React, { useEffect, setState, useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Schools from '../src/components/Reports/Schools';
-import DegreeSearch from './components/Reports/Degrees/DegreeSearch';
-import FinancialsReport from './components/Reports/Financials/FinancialsReport';
-import Footer from './components/Footer/Footer';
-
-
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Schools from "../src/components/Reports/Schools";
+import DegreeSearch from "./components/Reports/DegreeSearch";
+import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [data, setData] = useState(null);
+  const [apiKey, setApiKey] = useState(
+    "6uZ6pdqW450sBe8x01Tsb3LDI0rV6SwkOaAohtGs"
+  );
+  const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=25`;
+
+  useEffect(async () => {
+    const data = await getAllDataFromApi();
+    console.log(JSON.stringify(data));
+    setData(data);
+  }, []);
+
+  // switch to this function when you want to read from json files
+  const getAllDataFromFiles = async () => {
+    const finders = [];
+    const curUrl = (pageNum) => `data/page${pageNum}.json`;
+    for (let x = 0; x < 6; x++) {
+      finders.push(
+        fetch(curUrl(x), {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }).then((resp) => resp.json())
+      );
+    }
+    return await Promise.all(finders).then((values) => {
+      return values.reduce((acc, cur, idx) => {
+        // When you want to read from the json files, you will have to use curr
+        // instead since the json file consist of just the result array
+        if (cur) {
+          acc.push(...cur);
+        }
+        return acc;
+      }, []);
+    });
+  };
+
+  const getAllDataFromApi = async () => {
+    const finders = [];
+    const curUrl = (pageNum) => `${baseUrl}&page=${pageNum}`;
+    // By going based on increments of 4 (x = 30, 31, 32, 33, 34), there will be 100 records pulled in total
+    for (let x = 30; x < 35; x++) {
+      finders.push(
+        fetch(curUrl(x)).then((resp) => resp.json())
+      );
+    }
+    return await Promise.all(finders).then((values) => {
+      return values.reduce((acc, cur, idx) => {
+        if (cur && cur.results) {
+          acc.push(...cur.results);
+        }
+        return acc;
+      }, []);
+    });
+  };
+
   return (
     <div className="flex-column flex-1">
       <div className="header-div">
@@ -19,9 +73,8 @@ function App() {
       <div className="flex-column flex-1 pad-10">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/schools" exact component={Schools} />
-          <Route path="/degree" exact component={DegreeSearch} />
-          <Route path="/financials" exact component={FinancialsReport} />
+          <Route path="/schools" exact render={() => <Schools data={data}/>} />
+          <Route path="/degrees" exact render={() => <DegreeSearch data={data}/>} />
         </Switch>
       </div>
       <div className="flex footer-div">
