@@ -1,6 +1,5 @@
 import React, { setState, useEffect, useState } from 'react';
 import InformationViewer from '../InformationViewer';
-import Sidebar from '../Sidebar';
 
 function Schools(props) {
     const columns = getColumns();
@@ -29,26 +28,22 @@ function Schools(props) {
         }
         return await Promise.all(finders).then((values) => {
             return values.reduce((acc, cur, idx) => {
-                if (cur && cur.results){
+                if (cur && cur.results) {
                     acc.push(...cur.results);
                 }
                 return acc;
             }, []);
         });
     }
-  return (
-    <div className="flex-column">
-      
-      <div className="flex flex-1">
-      
-    <div className="flex-column flex-1 pad-10">
-      <Sidebar />  
-            <h3>Find your School</h3>
-          <InformationViewer rowData={data} columnDefs={columnDefs}></InformationViewer>
-          
-      </div>
-      </div>
-    </div>
+    return (
+        <div className="flex-column">
+            <div className="flex flex-1">
+                <div className="flex-column flex-1 pad-10">
+                    <h3>Find your School</h3>
+                    <InformationViewer rowData={data} columnDefs={columnDefs}></InformationViewer>
+                </div>
+            </div>
+        </div>
     );
 }
 
