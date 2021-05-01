@@ -19,7 +19,7 @@ function DegreeSearch(props) {
 
 function getColumns() {
   return [
-    { headerName: "Major", field: "title", width: 500}
+    { headerName: "Major", field: "title", width: 500 }
   ];
 }
 
