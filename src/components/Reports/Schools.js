@@ -11,7 +11,7 @@ function Schools(props) {
             <div className="flex flex-1">
                 <div className="flex-column flex-1">
                     <h3>Find your School</h3>
-                    <InformationViewer rowData={props.data} columnDefs={columnDefs}></InformationViewer>
+                    <InformationViewer onCellClicked={onCellClicked}rowData={props.data} columnDefs={columnDefs}></InformationViewer>
                 </div>
             </div>
         </div>
@@ -32,8 +32,28 @@ function getColumns() {
         { headerName: "School", field: "school.name" },
         { headerName: "State", field: "school.state", width: 75 },
         { headerName: "Zip", field: "school.zip", width: 125 },
-        { headerName: "Link", field: "school.schoolUrl", width: 125 }
+        { 
+            headerName: "Link", 
+            colId: "schoolUrl", 
+            width: 75, 
+            valueGetter: (params) => { return params.data.school.school_url },
+            cellRenderer: function(params) {
+                return 'Info';
+           },
+           cellClass: 'cursor-pointer'
+        },
+
     ]
+}
+
+function onCellClicked(column) {
+    switch (column.column.colId) {
+        case 'schoolUrl':
+            window.open(column.value);
+            break;
+        default:
+            break;
+    }
 }
 
 export default Schools;
