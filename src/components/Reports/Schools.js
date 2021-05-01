@@ -49,7 +49,7 @@ function getColumns() {
 function onCellClicked(column) {
     switch (column.column.colId) {
         case 'schoolUrl':
-            window.open(column.val, "_blank");
+            window.open(column.value);
             break;
         default:
             break;
