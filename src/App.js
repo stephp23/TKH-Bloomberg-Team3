@@ -1,18 +1,23 @@
 import "./App.css";
 import React, { useEffect, setState, useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Schools from '../src/components/Reports/Schools';
-import DegreeSearch from './components/Reports/Degrees/DegreeSearch';
-import Footer from './components/Footer/Footer';
+import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
+import Schools from "../src/components/Reports/Schools";
+import DegreeSearch from "./components/Reports/Degrees/DegreeSearch";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [data, setData] = useState(null);
+  const [apiKey, setApiKey] = useState(
+    "4GXH1JZZMWLKlc9oP2eb2A8RrDADLndBMR2jGnY2"
+  );
+  const baseUrl = `https://api.data.gov/ed/collegescorecard/v1/schools?api_key=${apiKey}&per_page=100`;
 
   useEffect(async () => {
     const data = await getAllData();
     console.log(data);
+    setData(data);
   }, []);
 
   const getAllData = async () => {
@@ -45,8 +50,8 @@ function App() {
       <div class="flex-column flex-1">
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/schools" exact component={Schools} />
-          <Route path="/degree" exact component={DegreeSearch} />
+          <Route path="/schools" data={data} exact component={Schools} />
+          <Route path="/degree" data={data} exact component={DegreeSearch} />
         </Switch>
       </div>
       <div class="flex footer-div">
