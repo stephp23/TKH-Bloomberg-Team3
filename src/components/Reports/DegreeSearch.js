@@ -27,7 +27,7 @@ function getDetailCellRendererParams() {
   return {
     detailGridOptions: {
       columnDefs: [
-        { field: 'name' },
+        { field: 'name', width: 500 },
         { field: 'alias' }
       ]
     },
@@ -61,7 +61,7 @@ function getGroupedData(data) {
       const majorBase = { ...grouped[majorCode] };
       majorBase.schools = Object.keys(majorBase.schoolMap).map(schoolName => majorBase.schoolMap[schoolName]);
       delete majorBase.schoolMap;
-      majorBase.schools.sort((a, b) => a.name > b.name ? 1 : 0);
+      majorBase.schools.sort((a, b) => a.name > b.name ? 1 : -1);
       return majorBase;
     });
     majors.sort((a, b) => a.title > b.title ? 1 : -1);
