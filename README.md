@@ -8,7 +8,7 @@
   <h1 align="center">College Finder</h1>
 
   <p align="center">
-    What are you in the mood to watch?
+    Find your?
     <br />
     <a href="https://github.com/stephp23/TKH-Bloomberg-Team3"><strong>🔍Explore the Docs »</strong></a>
     <br />
@@ -63,7 +63,7 @@ Search and compare colleges: their fields of study, costs, admissions, results, 
 
 ## API
 
-We are using the - [U.S. DEPARTMENT OF EDUCATION College Scorecard](https://github.com/RTICWDT/open-data-maker/blob/master/API.md)
+We are using the - [U.S. Department of Education College Scorecard](https://github.com/RTICWDT/open-data-maker/blob/master/API.md)
 
  <!-- which gives the following information:
 
@@ -71,7 +71,7 @@ We are using the - [U.S. DEPARTMENT OF EDUCATION College Scorecard](https://gith
 - Most Recent Institution-Level Data
 - Most Recent Data by Field of Study -->
 - Field of study-level data files for the pooled 2014-15, 2015-16 award years through the pooled 2016-17, 2017
-- Crosswalk files for 2000-01 through 2018-19 that link the Department’s OPEID with an IPEDS UNITID for each institution.
+- Crosswalk files for 2000-01 through 2018-19 that link the Department’s OPEID with an IPEDS UNITID for each institution -->
 
 
 
@@ -84,7 +84,7 @@ This project was built using React JS, JavaScript, CSS, and Material UI on the f
 
 - [JavaScript](https://javascript.com)
 - [ReactJS](https://reactjs.org)
-- [U.S. Small Business Administration PPP Loan Forgiveness API](https://ussbaforgiveness.github.io/API-Dictionary.html)
+- [U.S. Department of Education College Scorecard](https://github.com/RTICWDT/open-data-maker/blob/master/API.md)
 - [Material UI](https://material-ui.com/)
 
 <!-- ACKNOWLEDGEMENTS -->
@@ -102,7 +102,7 @@ This project was built using React JS, JavaScript, CSS, and Material UI on the f
 - Katherine Fernandez - [LinkedIn](https://www.linkedin.com/in/katfernandez22/)
 - Andrew Karnis - [LinkedIn]()
 - Joey Jiemjitpolchai - [LinkedIn](https://www.linkedin.com/in/joey-j-703686125/)
-- Will Roney - [LinkedIn]()
+- Will Roney - [LinkedIn](https://www.linkedin.com/in/will-roney-741b513/)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
